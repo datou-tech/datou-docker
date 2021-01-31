@@ -139,21 +139,46 @@ Things to note:
     > docker run -d --name <name> --restart always <image>
 ```
 
+#### Filesystems
+
+Types of volumes to a container
+
+- `bind mount` - mounts a location on the host system to the container at a specified location (ie, docker run --mount type=bind,src=<SRC>,dst=<DST>)
+- `inmemory` - temporary storage in a container (ie, docker run --mount type=tmpfs,dst=/tmp,tmpfs-size=16k,tmpfs-mode=1770)
+- `docker volume` - managed by docker on the host file system. You create the volume (ie, docker volume create --driver local --label name=value example-volume) and then mount it. (ie, docker run --mount type=volume,src=example-volume,dst=/data)
+
+Some quick management commands:
+
+- `docker volume list` - list all volumes
+- `docker volume remove <id>` - remove a volume
+
+#### Networking
+
+Networking Basics
+
+- `Host Network` - references the network that the server/computer is connected
+- `Bridge Network` - connects all the containers on a server
+- Each container has a network address that is attached to the bridge
+- `docker network ls` - shows the interfaces
+- `docker network create ... ` - create a bridge
+- `docker network connect <network1> <network2>` connects 2 bridge networks together
+- `docker attach <network>` - attaches the network to docker. it will create a new ethernet link on containers (ie, a new eth1 interface)
+
+DNS Management
+
+- `docker run --dns-search datou.local --dns=8.8.8.8 ...` - modify the /etc/resolv.conf file
+- `docker run --add-host test:127.0.0.1 ...` - modify the /etc/hosts file
+
+#### Resource Limits
+
+NEXT
+
 #### Building a Dockerfile
 
 NEXT
 *Multi-stage builds*
 
-####
-
 #### Docker Compose
 
 NEXT
 
-#### Filesystems
-
-NEXT
-
-#### Networking
-
-NEXT
