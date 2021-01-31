@@ -171,14 +171,36 @@ DNS Management
 
 #### Resource Limits
 
-NEXT
+MEMORY
+
+- `docker run --memory 256m ...` - denotes allowable memory
+
+CPU
+
+- `docker run --cpu-share=1024 ...` - denotes the relative cpu on the server vs another container
+- `docker run --cpu=0.75 ...` - denotes the raw cpu limit per calculated period
+- `docker run --cpuset-cpus 0 ...` - for servers with multiple cores, to specify which core it can use
 
 #### Building a Dockerfile
 
-NEXT
-*Multi-stage builds*
+The difference directives of a Dockerfile that behave like a commandline building of a docker image
+
+- `FROM` - the 
+- `LABEL` - metadata (ie, --label on cli)
+- `RUN` - runs a provided command
+- `ENV` - sets environment variables (ie, --env on cli)
+- `WORKDIR` - default working dir
+- `COPY` - copies files from local filesystem into the container (ie, COPY ["./someFiles", "./someMoreFiles", /destination] - the last item is the destination in the container)
+- `VOLUME` - create volume in the container - this is more limiting vs runtime mounting 
+- `ENTRYPOINT` - the executable to run at container startup (default is bin/sh -c)
+- `CMD` - arguments passed to the ENTRYPOINT
+- `EXPOSE` - the port to expose when container is run
+- `USER` - sets up the user on the container after the build is complete
+- `HEALTHCHECK` - an instruction to run periodically to check health of container 
+
+Multi-stage builds have multiple FROM lines that break up each stage of building. They are useful in separating build time and runtime concerns. 
 
 #### Docker Compose
 
-NEXT
+Similar to how Dockerfile declares the imperative approach of managing containers. Docker Compose is the declarative approach for the docker swarm command that orchestrates containers in an environment.
 
