@@ -200,6 +200,8 @@ The difference directives of a Dockerfile that behave like a commandline buildin
 
 Multi-stage builds have multiple FROM lines that break up each stage of building. They are useful in separating build time and runtime concerns. 
 
+To build a docker container use the format `<org>/<image_name>:<tag>` in the form of `docker build -t datou/example:latest .`
+
 #### Docker Compose
 
 Similar to how Dockerfile declares the imperative approach of managing containers. Docker Compose is the declarative approach for the docker swarm command that orchestrates containers in an environment.
