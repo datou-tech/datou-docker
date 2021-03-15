@@ -78,6 +78,11 @@ Image Names follow the format for example:
 - `docker exec <container_name> <command>` - run a command against a container
 - `docker top <container_name>` - view processes running in a container
 
+**System**
+- `docker system df` - disk usage by images & containers
+- `docker system events` - system logs
+- `docker system prune` - remove all containers, networks, caches and dangling images
+
 #### Docker Run In Detail
 
 ##### A detached container 
